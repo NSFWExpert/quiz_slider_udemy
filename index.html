@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name ="viewport" content="width=device-width; initial-scale=1.0">
+        <title>Quiz App with Timer</title>
+    </head>
+
+    <body>
+        <div id="quiz">
+            <header> <!-- takes width of parent element, not the same as head! here comes the headline-->
+                <h1 id="h1">Quiz &amp; Headline here</h1> <!-- you must use &amp; for adding the & symbol-->
+            </header>
+            <!-- to track questions, we need 4 diffrent styles in js: 1 empty, 1 right, 1 wrong 1 active/current-->
+            <div id="tracker"> <!-- div container element which holds the steps/trackers inside-->
+                <div class="steps" id="step1">1</div> <!-- nos=steps no1=step1 -->
+                <div class="steps" id="step2">2</div>
+                <div class="steps" id="step3">3</div>
+                <div class="steps" id="step4">4</div>
+                <div class="steps" id="step5">5</div>
+                <div class="steps" id="step6">6</div>
+                <div class="steps" id="step7">7</div>
+                <div class="steps" id="step8">8</div>
+                <div class="steps" id="step9">9</div>
+                <div class="steps" id="step10">10</div>
+            </div>
+            <hr> <!-- horizontal line -->
+            <div id="quizset"> <!-- quiz-set contains 1 question, 4 options(possible answers), one button for next or submit -->
+                <p id="question">Question</p> <!-- Question goes here -->
+                <div id="options" class="options"> 
+                    <!-- 4 answers are 4 buttons / options, however you call-->
+                    <button id="btn1" class="button"><span id="option1"></span>Option1</button> <!--span with id is important, because content shall be changeable, the have "dynamic values"-->
+                    <button id="btn2" class="button"><span id="option2"></span>Option2</button> <!--span with id is important, because content shall be changeable, the have "dynamic values"-->
+                    <button id="btn3" class="button"><span id="option3"></span>Option3</button> <!--span with id is important, because content shall be changeable, the have "dynamic values"-->
+                    <button id="btn4" class="button"><span id="option4"></span>Option4</button> <!--span with id is important, because content shall be changeable, the have "dynamic values"-->
+                </div>
+                <!-- 1 button for continue and submit -->
+                <button id="submit">Next Question</button> 
+            </div>
+            <div id="resultBox"> <!-- is hidden, shows the score and button for retake later-->
+                <p id="result">Result lines</p> <!-- Feedback -->
+                <button id="retake">Retake Test</button>
+            </div>
+            <hr> <!-- horizontal line -->
+            <!-- footer has 2 parts, 1 for progress and 1 for counter-->
+            <footer>
+                <p id="progress">Question 1 of 10</p>
+                <div id="timer">timer</div>
+            </footer>
+        </div>
+
+    
+    </body>
+</html>
