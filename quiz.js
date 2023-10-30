@@ -35,6 +35,7 @@ var option4 = $("option4");
 var progress = $("progress");
 var submit = $("submit");
 var retake = $("retake");
+var start = $("startBtn");
 var result = $("result");
 var resultBox = $("resultBox");
 var button1 = $("btn1");
@@ -42,12 +43,50 @@ var button2 = $("btn2");
 var button3 = $("btn3");
 var button4 = $("btn4");
 
+
 var tracker; // holding the steps of the quiz
 var countDown; // hold the timer function - call the set timer function
 // SET TIMER
 var secsInput = 9; // 5 for 5 seconds, you can also do more (at least 30 sec are fine)
 var seconds = secsInput; // secsInput is the original value, where it starts when a new question is active
 var t; // for the timer
+
+
+//___________________________________________________________
+// 8. Make a start quiz button, Entrance text
+//  let startBox hide, once its clicked and show questions to start quiz
+
+start.addEventListener("click",startTest);
+
+
+function startTest() {
+    // startTimer(seconds, "timer"); // it should start, but its not working
+    $("quizSet").style.display = "block";
+    $("progress").style.display="none"; // change to inline when it should be visible
+    $("timer").style.display = "none"; // change to inline when it should be visible
+    $("tracker").style.display = "inline";
+    $("startBox").style.display = "none";
+    countDown = setTimeout('startTimer('+secs+',"'+elem+'")',1000);
+}
+
+// start the test from beginning again when retaking
+rand = Math.round(Math.random() * questions.length);
+while(rand == questions.length) {
+    rand = Math.round(Math.random() * questions.length);
+}
+
+
+record[0] = rand;
+
+//onload function
+window.onload = getQuestion(questionCount, rand);
+
+
+
+//________________________________________________________________________________________________________________________________
+
+
+
 
 // 2. Loading the current question into the app
 // 2.1 setting the question --> qCount+1 is the number of the question, which is display. Starts at 0 so question 1 is (0+1), question 2 is (1+1) three is (2+1) and os on
@@ -199,7 +238,9 @@ function startTimer(secs, elem) {
 
     secs--; // decrease (counts down) counter
     //recurring function  --->    countDown = setTimeout(function call in the form of a string, delay in milliseconds)
-    countDown = setTimeout('startTimer('+secs+',"'+elem+'")',1000); // start timer (secs value will be parsed)
+    
+    // place countDown = setTimeout('startTimer('+secs+',"'+elem+'")',1000);   here for let timer run (think about to display timer, if not visible)
+    // countDown = setTimeout('startTimer('+secs+',"'+elem+'")',1000);     // start timer (secs value will be parsed)
 }
 
 // setTimer(startTimer(seconds, "timer"),1000);
@@ -246,7 +287,7 @@ submit.addEventListener("click", nextQuestion);
 function nextQuestion() {
     //no option selected
     console.log(button1.style.backgroundColor);
-    console.log(button1.style.backgroundColo !== "rgb(26, 255, 26)");
+    console.log(button1.style.backgroundColor !== "rgb(26, 255, 26)");
     if(button1.style.backgroundColor !== "rgb(26, 255, 26)" && button2.style.backgroundColor !== "rgb(26, 255, 26)" && button3.style.backgroundColor !== "rgb(26, 255, 26)" && button4.style.backgroundColor !== "rgb(26, 255, 26)") {       
             alert("Please select an option!")
             return;
@@ -284,6 +325,7 @@ retake.addEventListener("click",retakeTest);
 
 function retakeTest() {
     window.location.reload();
+    $("startBox").style.display = "none";
 }
 
 // start the test from beginning again when retaking
@@ -296,6 +338,7 @@ record[0] = rand;
 
 //onload function
 window.onload = getQuestion(questionCount, rand);
+
 
 
 
